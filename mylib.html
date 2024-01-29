@@ -1,0 +1,45 @@
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <ul id="bookshelf"></ul>
+
+    <script>
+    
+
+    $.getJSON('https://openlibrary.org/people/thilo_plikat/lists/OL246155L/seeds.json', {}, function(data) {
+        console.log("succesfully loaded json");
+        $.each(data.entries,function(index){
+            console.log(data.entries[index].title);
+            // Create an "li" node:
+            const node = document.createElement("li");
+
+            // Create a text node:
+           
+            const image = document.createElement("img");
+            const url = data.entries[index].url.split('/');
+            const olid = url[2];
+            console.log(olid);
+            const pic = data.entries[index].picture.url.split('-');
+            const src = "https:"+ pic[0] +"-M.jpg";
+            image.src = src;
+            const titleTag = document.createElement("div")
+            titleTag.className = "title"
+            titleTag.innerText = data.entries[index].title;
+
+        // Append the text node to the "li" node:
+        node.appendChild(image);
+        node.appendChild(titleTag);
+
+        // Append the "li" node to the list:
+    document.getElementById("bookshelf").appendChild(node);
+
+        })
+    });
+
+
+        
+    </script>
+</body>

@@ -1,0 +1,36 @@
+body {
+    background-color: black;
+}
+
+#bookshelf {
+    list-style:none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+li {
+    margin: 15px 15px 15px 15px;
+}
+
+.title {
+    background-color: rgb(0, 0, 0, 0.5);
+/*positioned relative to parent div (container) */
+    position: absolute;    
+/* bottom margin is 0 so that it
+coincides with container's bottom margin*/
+    bottom: 0;            
+    color: white;
+    width: 100%;
+    font-size: 25px;
+    padding: 15px 0;
+    text-align: center;
+    /*invisible because opacity is 0*/
+    opacity: 0;            
+    transition: 0.6s;
+}
+
+#bookshelf .li:hover .title {
+/*becomes visible on hover*/
+    opacity: 1;        
+}
